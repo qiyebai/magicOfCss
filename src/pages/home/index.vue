@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="acount">
-      <span class="title">欢迎来到THREEMAP</span>
+      <span class="title">MAGIC OF CSS</span>
     </div>
   </div>
 </template>
