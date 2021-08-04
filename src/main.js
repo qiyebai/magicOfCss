@@ -57,6 +57,14 @@ window.addEventListener(
   },
   true,
 );
+const context = require.context('./pages/', true, /mgc-\w+\.vue/);
+const install = () => {
+  context.keys().forEach((key) => {
+    const component = context(key).default;
+    Vue.component(component.name, component);
+  });
+};
+install();
 new Vue({
   router,
   store,

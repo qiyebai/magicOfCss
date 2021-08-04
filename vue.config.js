@@ -18,21 +18,6 @@ module.exports = {
         })
         .end();
     });
-    //
-    config.module // 将xml-loader替换成raw-loader
-      .rule('raw-loader')
-      .test(/.(bpmn|xml)$/)
-      .use('raw-loader')
-      .loader('raw-loader')
-      .end();
-    //
-    config.plugin('monaco-editor').use(MonacoWebpackPlugin, [
-      {
-        languages: ['json', 'mysql', 'html', 'css', 'less', 'scss', 'markdown'],
-        features: ['coreCommands', 'bracketMatching', 'folding'],
-        // features: ['accessibilityHelp', 'bracketMatching', 'caretOperations', 'clipboard', 'codeAction', 'codelens', 'colorDetector', 'comment', 'contextmenu', 'coreCommands', 'cursorUndo', 'dnd', 'find', 'folding', 'fontZoom', 'format', 'gotoError', 'gotoLine', 'gotoSymbol', 'hover', 'iPadShowKeyboard', 'inPlaceReplace', 'inspectTokens', 'linesOperations', 'links', 'multicursor', 'parameterHints', 'quickCommand', 'quickOutline', 'referenceSearch', 'rename', 'smartSelect', 'snippets', 'suggest', 'toggleHighContrast', 'toggleTabFocusMode', 'transpose', 'wordHighlighter', 'wordOperations', 'wordPartOperations'],
-      },
-    ]);
   },
   configureWebpack: {
     resolve: {

@@ -2,12 +2,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import Home from '@/pages/home/index.vue';
-const context = require.context('../pages/', true, /th-[\w.]+\.vue/);
+import magicShow from '@/pages/magicShow/index.vue';
+const context = require.context('../pages/', true, /mgc-[\w.]+\.vue/);
 const auto_router = [];
 const mlInstall = () => {
   context.keys().forEach((key) => {
     const component = context(key).default;
-    const fullPath = key.substring(2).split('/th-')[1];
+    const fullPath = key.substring(2).split('/mgc-')[1];
     const path = fullPath.split('.vue')[0]
     const fullPathed = key.substring(2)
     auto_router.push({
@@ -24,7 +25,13 @@ const routes = auto_router.concat([
   {
     path: '/',
     name: '',
-    component: Home,
+    component: magicShow,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/magicShow',
+    name: '',
+    component: magicShow,
     meta: { requiresAuth: true },
   },
 ])
