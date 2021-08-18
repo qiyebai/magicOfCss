@@ -3,7 +3,9 @@
     <ul class="lists">
       <li v-for="(item,index) in data_lists" :key="index" class="lists-item">
         <div class="show">
-          <component :is="item.name"></component>
+          <component :is="item.name">
+            <div style="color:#aaa">我是slot</div>
+          </component>
         </div>
         <div class="name">{{item.name}}</div>
       </li>

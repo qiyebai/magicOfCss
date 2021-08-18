@@ -1,22 +1,19 @@
 <template>
   <div class="title-content">
-    <span style="animation-delay: 519ms;">智</span>
-    <span style="animation-delay: 19ms;">能</span>
-    <span style="animation-delay: 649ms;">编</span>
-    <span style="animation-delay: 259ms;">排</span>
-    <span style="animation-delay: 139ms;">与</span>
-    <span style="animation-delay: 489ms;">协</span>
-    <span style="animation-delay: 569ms;">同</span>
-    <span style="animation-delay: 229ms;">响</span>
-    <span style="animation-delay: 149ms;">应</span>
-    <span style="animation-delay: 69ms;">平</span>
-    <span style="animation-delay: 439ms;">台</span>
+    <span v-for="(item,index) in props_text" :style="{'animation-delay': parseInt(Math.random()*500)+'ms'}" :key="index">{{item}}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'mgcGradual',
+  text: '参数名称:props_text,类型:字符串',
+  props: {
+    props_text: {
+      default: 'mgcGradual',
+      type: String,
+    },
+  },
 };
 </script>
 

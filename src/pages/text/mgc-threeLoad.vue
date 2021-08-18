@@ -1,18 +1,26 @@
 <template>
   <div class="loading">
-    <span style="animation-delay: 0s;">L</span>
-    <span style="animation-delay: 0.1s;">o</span>
-    <span style="animation-delay: 0.2s;">a</span>
-    <span style="animation-delay: 0.3s;">d</span>
-    <span style="animation-delay: 0.4s;">i</span>
-    <span style="animation-delay: 0.5s;">n</span>
-    <span style="animation-delay: 0.6s;">g</span>
+    <span v-for="(item,index) in props_text" :style="{'animation-delay': index*props_delay+'s','animation-duration':props_duration+'s'}" :key="index">{{item}}</span>
   </div>
 </template>
 
 <script>
 export default {
   name: 'mgcThreeLoad',
+  props: {
+    props_text: {
+      default: 'mgcThreeLoad',
+      type: String,
+    },
+    props_delay: {
+      default: 0.1,
+      type: Number,
+    },
+    props_duration: {
+      default: 1,
+      type: Number,
+    },
+  },
 };
 </script>
 
