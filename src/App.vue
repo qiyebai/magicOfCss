@@ -10,17 +10,6 @@
 
 export default {
   name: 'App',
-  data() {
-    return {
-
-    };
-  },
-  mounted() {
-    this.$Message.config({
-      duration: 2,
-    });
-    // init();
-  },
 };
 </script>
 

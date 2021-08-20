@@ -21,6 +21,7 @@ export default {
 .title-content{
   span{
     opacity: 0;
+    font-size: 30px;
     filter: blur(10px);
     animation: fadeIn 2s alternate infinite;
   }
