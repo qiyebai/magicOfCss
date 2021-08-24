@@ -8,19 +8,18 @@
 export default {
   name: 'mgcShrink',
   props: {
-    props_text: {
-      default: 'Mgc Shrink Show',
-      type: String,
+    props_textArry: {
+      default: () => ['Mgc', 'Shrink', 'Show'],
+      type: Array,
     },
   },
   computed: {
     com_text() {
-      if (!this.props_text) {
+      if (!this.props_textArry) {
         return [];
       }
       const local_stringArry = [];
-      const local_arry = this.props_text.split(' ');
-      local_arry.forEach((items) => {
+      this.props_textArry.forEach((items) => {
         items.split('').forEach((item, index) => {
           local_stringArry.push({
             type: index === 0 ? 'initial' : 'hidden',

@@ -9,7 +9,7 @@ export default {
   name: 'mgcLadderLoad',
   props: {
     props_text: {
-      default: 'mgcLadderLoad',
+      default: 'mgcLadder',
       type: String,
     },
     props_delay: {
