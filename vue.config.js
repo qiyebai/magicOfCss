@@ -2,7 +2,7 @@
 module.exports = {
   productionSourceMap: false,
   outputDir: 'web',
-  publicPath: '',
+  publicPath: './',
   chainWebpack: (config) => {
     config.resolve.symlinks(true); // 修复热更新失效
     //
