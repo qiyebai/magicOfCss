@@ -12,7 +12,7 @@ export default {
   name: 'mgcInverted',
   props: {
     props_img: {
-      default: '/images/imgs.jpg',
+      default: 'images/imgs.jpg',
       type: String,
     },
   },

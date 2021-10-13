@@ -16,7 +16,7 @@ export default {
       type: String,
     },
     props_videoUrl: {
-      default: '/images/ocean.mp4',
+      default: 'images/ocean.mp4',
       type: String,
     },
   },
