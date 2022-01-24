@@ -1,21 +1,21 @@
 <template>
-  <div>
+  <div class="phone">
     <div class="tool">
       <Button :disabled="data_index===0" @click="getImg('up')">上一张</Button>
       <Button :disabled="data_index===data_picture.length-1" @click="getImg('down')">下一张</Button>
     </div>
     <div class="data">{{com_birthTime}}</div>
     <div class="data">{{data_picture[data_index].data}}</div>
+    <ul class="menu">
+      <li v-for="(item,index) in data_picture" :key="index" :id="index" :class="data_index===index?'active':''" @click="choose(index)">
+        {{item.time}}
+      </li>
+    </ul>
     <div class="content">
       <div class="picture">
         <img :src="'images/'+data_picture[data_index].url" alt="">
       </div>
     </div>
-    <ul class="menu">
-      <li v-for="(item,index) in data_picture" :key="index" :class="data_index===index?'active':''" @click="choose(index)">
-        {{item.time}}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       data_picture: picture,
-      data_index: 0,
+      data_index: 55,
     };
   },
   mounted() {
@@ -58,6 +58,7 @@ export default {
       } else {
         this.data_index++;
       }
+      document.getElementById(this.data_index).scrollIntoView();
     },
     choose(index) {
       this.data_index = index;
@@ -73,6 +74,7 @@ export default {
 }
 .picture{
   width: 600px;
+  max-width: 100%;
   img{
     width:100%;
   }
@@ -99,12 +101,35 @@ export default {
   text-align: center;
   li{
     cursor: pointer;
+    border:1px solid #dfdfdf;
+    border-radius: 8px;
+    margin: 4px auto;
+    width: 80%;
+    list-style: none;
     &.active{
-      color: #1f5aff
-    }
-    &:hover{
-      color: #1f5aff
-    }
+        background: #1f5aff;
+        color: #fff;
+      }
+      &:hover{
+        background: #1f5aff;
+        color: #fff;
+      }
  }
+}
+@media screen and (max-width: 800px) {
+  .menu{
+    position: relative;
+    width: inherit;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    li{
+      width: 100px;
+      display: inline-block;
+      text-align: center;
+      // background: #1f5aff;
+      // color: #fff;
+      margin: 0 4px;
+    }
+  }
 }
 </style>
