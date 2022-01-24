@@ -1,10 +1,9 @@
 import Vue from 'vue';
 import ViewDesign from 'view-design';
 import 'view-design/dist/styles/iview.css';
-
-import App from './App.vue';
-import router from './router';
 import store from './store';
+import router from './router';
+import App from './App.vue';
 
 Vue.config.productionTip = false;
 Vue.use(ViewDesign);

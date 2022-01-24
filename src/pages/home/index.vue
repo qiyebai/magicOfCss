@@ -1,46 +1,110 @@
 <template>
-  <div class="content">
-    <div class="acount">
-      <span class="title">MAGIC OF CSS</span>
+  <div>
+    <div class="tool">
+      <Button :disabled="data_index===0" @click="getImg('up')">上一张</Button>
+      <Button :disabled="data_index===data_picture.length-1" @click="getImg('down')">下一张</Button>
     </div>
+    <div class="data">{{com_birthTime}}</div>
+    <div class="data">{{data_picture[data_index].data}}</div>
+    <div class="content">
+      <div class="picture">
+        <img :src="'images/'+data_picture[data_index].url" alt="">
+      </div>
+    </div>
+    <ul class="menu">
+      <li v-for="(item,index) in data_picture" :key="index" :class="data_index===index?'active':''" @click="choose(index)">
+        {{item.time}}
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+const picture = [];
+const context = require.context('../../../public/images/', true, /[\w.]+\.jpg/);
+context.keys().forEach((key) => {
+  const fullPath = key.substring(2).split('.');
+  picture.push({
+    time: fullPath[0].slice(0, 10),
+    url: key.substring(2),
+    data: `${fullPath[0].substring(0, 4)}年${fullPath[0].slice(5, 7)}月${fullPath[0].slice(8, 10)}日`,
+  });
+});
 export default {
-
+  data() {
+    return {
+      data_picture: picture,
+      data_index: 0,
+    };
+  },
+  mounted() {
+    // setInterval(() => {
+    //   this.data_index++;
+    // }, 1000);
+  },
+  computed: {
+    com_birthTime() {
+      const local_birthTime = (new Date(this.data_picture[this.data_index].time).getTime() - new Date('2021-09-13').getTime()) / (1000 * 60 * 60 * 24);
+      if (local_birthTime < 0) {
+        return `距离出生还有${-local_birthTime}天`;
+      }
+      return `我已经出生${local_birthTime}天`;
+    },
+  },
+  methods: {
+    getImg(type) {
+      if (type === 'up') {
+        this.data_index--;
+      } else {
+        this.data_index++;
+      }
+    },
+    choose(index) {
+      this.data_index = index;
+    },
+  },
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .content{
-  display:flex;
-  height: 100%;
-  .acount{
-    display:flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    .title{
-      font:bold 100px sans-serif;
-      position: relative;
-      --fill-color: #198CE6;
-      display: block;
-      text-decoration: none;
-      text-transform: uppercase;
-      -webkit-text-stroke: 2px var(--fill-color);
-      background: linear-gradient(var(--fill-color) 0 100%) left/0 no-repeat;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
-      transition: 1s linear;
-      padding: 4px 0;
-      cursor: pointer;
-      &:hover{
-        background-size: 100%;
-      }
-    }
+  display: flex;
+  justify-content: center;
+}
+.picture{
+  width: 600px;
+  img{
+    width:100%;
   }
+}
+.tool{
+  width: 200px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+.data{
+  text-align: center;
+  font-size: 20px;
+  line-height: 32px;
+}
+.menu{
+  position: fixed;
+  max-height: 100vh;
+  overflow: auto;
+  top: 0;
+  width: 200px;
+  line-height: 32px;
+  text-align: center;
+  li{
+    cursor: pointer;
+    &.active{
+      color: #1f5aff
+    }
+    &:hover{
+      color: #1f5aff
+    }
+ }
 }
 </style>
