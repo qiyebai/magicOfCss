@@ -1,7 +1,7 @@
 <template>
   <div class="content">
     <div class="acount">
-      <span class="title">MAGIC OF CSS</span>
+      <span class="title">基础代码</span>
     </div>
   </div>
 </template>
