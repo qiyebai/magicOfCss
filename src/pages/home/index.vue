@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       data_picture: picture,
-      data_index: 55,
+      data_index: 20,
     };
   },
   mounted() {
